@@ -1,6 +1,6 @@
 {
   "name": "react-native-fingerprint-identify",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A cool package for authenticate with Fingerprint sensor on Android device",
   "author": "William Tran",
   "nativePackage": true,

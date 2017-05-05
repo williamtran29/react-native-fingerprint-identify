@@ -62,6 +62,29 @@ in dependencies block
   compile project(':react-native-fingerprint-identify')
 ```  	
 
+# Example
+
+Please clone repo and look on the example project to get more details
+
+```javascript
+import FingerprintIdentify from 'react-native-fingerprint-identify';
+
+scanFingerprint = async () => {
+  try {
+    const initFingerPrintIdentify = await FingerprintIdentify.initFingerPrintIdentify()
+    const isSensorAvailable = await FingerprintIdentify.isSensorAvailable()
+    if (initFingerPrintIdentify && isSensorAvailable) {
+      await FingerprintIdentify.startIdentify((status) => {
+        console.log(status)
+      })
+    }
+  } catch (error) {
+    console.log(error)
+    return
+  }
+}
+
+```
 
 # Usage
 
@@ -110,30 +133,6 @@ FingerprintIdentify.dismiss()
 ### Removing event listener to scan fingerprint and also cancel identify ###
 ```
 FingerprintIdentify.cancelIdentify()
-```
-
-
-# Example
-
-```javascript
-import FingerprintIdentify from 'react-native-fingerprint-identify';
-
-scanFingerprint = async () => {
-  try {
-    const initFingerPrintIdentify = await FingerprintIdentify.initFingerPrintIdentify()
-    const isSensorAvailable = await FingerprintIdentify.isSensorAvailable()
-    if (initFingerPrintIdentify && isSensorAvailable) {
-      await FingerprintIdentify.startIdentify((status) => {
-        console.log(status)
-      })
-    }
-  } catch (error) {
-    console.log(error)
-    return
-  }
-}
-
-
 ```
 
 # Troubleshooting
