@@ -1,0 +1,21 @@
+{
+  "name": "react-native-fingerprint-identify",
+  "version": "1.0.0",
+  "description": "A cool package for authenticate with Fingerprint sensor on Android device",
+  "author": "William Tran",
+  "nativePackage": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/williamtran29/react-native-fingerprint-identify.git"
+  },
+  "keywords": [
+    "react-native",
+    "react",
+    "touch id",
+    "fingerprint",
+    "samsung fingerprint",
+    "meizu fingerprint",
+    "android fingerprint"
+  ],
+  "license": "MIT"
+}
