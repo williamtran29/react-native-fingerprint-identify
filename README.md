@@ -79,19 +79,23 @@ Please clone repo and look on the example project to get more details
 
 ```javascript
 import FingerprintIdentify from 'react-native-fingerprint-identify';
+import { Platform } from 'react-native'
 
+// Make sure you run in Android Platform condition
 scanFingerprint = async () => {
-  try {
-    const initFingerPrintIdentify = await FingerprintIdentify.initFingerPrintIdentify()
-    const isSensorAvailable = await FingerprintIdentify.isSensorAvailable()
-    if (initFingerPrintIdentify && isSensorAvailable) {
-      await FingerprintIdentify.startIdentify((status) => {
-        console.log(status)
-      })
+  if (Platform.OS === 'android') {
+    try {
+      const initFingerPrintIdentify = await FingerprintIdentify.initFingerPrintIdentify()
+      const isSensorAvailable = await FingerprintIdentify.isSensorAvailable()
+      if (initFingerPrintIdentify && isSensorAvailable) {
+        await FingerprintIdentify.startIdentify((status) => {
+          console.log(status)
+        })
+      }
+    } catch (error) {
+      console.log(error)
+      return
     }
-  } catch (error) {
-    console.log(error)
-    return
   }
 }
 
