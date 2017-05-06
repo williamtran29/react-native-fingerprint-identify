@@ -19,14 +19,25 @@ Api priority level：Android > Samsung > MeiZu, Xiaomi,...
 
 `$ npm install react-native-fingerprint-identify --save`
 
+
 ## Most automatic installation
 
 `$ react-native link react-native-fingerprint-identify`
 
+##### Make sure the following lines in `android/app/build.gradle`:
+```
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+...
+    defaultConfig {
+      targetSdkVersion 25
+
+```
+
 ## Manual Installation
 
-
-##### Open up `android/app/src/main/java/[...]/MainActivity.java`
+##### Open up `android/app/src/main/java/[...]/MainApplication.java`
 
 
   + Add `import com.fingerprint.identify.RNFingerprintIdentifyPackage;`
@@ -44,8 +55,7 @@ Api priority level：Android > Samsung > MeiZu, Xiaomi,...
   	project(':react-native-fingerprint-identify').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-fingerprint-identify/android')
 ```
 
-##### Insert and make sure the following lines in `android/app/build.gradle`:
-
+##### Make sure the following lines in `android/app/build.gradle`:
 ```
 android {
     compileSdkVersion 25
@@ -56,6 +66,7 @@ android {
 
 ```
 
+##### Insert the following lines inside the dependencies block in `android/app/build.gradle`
 
 in dependencies block
 ```
