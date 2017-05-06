@@ -14,7 +14,7 @@ export default {
       })
     })
   },
-  isSensorAvailable() {
+  isSensorAvailable: () => {
     return new Promise((resolve, reject) => {
       RNFingerprintIdentify.isSensorAvailable().then((result) => {
         if (result.error) {
