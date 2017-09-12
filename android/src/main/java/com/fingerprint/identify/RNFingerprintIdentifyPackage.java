@@ -18,7 +18,7 @@ public class RNFingerprintIdentifyPackage implements ReactPackage {
       return Arrays.<NativeModule>asList(new RNFingerprintIdentifyModule(reactContext));
     }
 
-    @Override
+    // @Override RN>=47
     public List<Class<? extends JavaScriptModule>> createJSModules() {
       return Collections.emptyList();
     }
