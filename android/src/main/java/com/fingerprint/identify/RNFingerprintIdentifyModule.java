@@ -2,6 +2,7 @@
 package com.fingerprint.identify;
 
 import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.LifecycleEventListener;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -17,7 +18,7 @@ import android.content.Context;
 import android.app.Activity;
 import android.util.Log;
 
-public class RNFingerprintIdentifyModule extends ReactContextBaseJavaModule {
+public class RNFingerprintIdentifyModule extends ReactContextBaseJavaModule implements LifecycleEventListener {
 
   private final ReactApplicationContext reactContext;
   private FingerprintIdentify mFingerprintIdentify = null;
@@ -28,6 +29,7 @@ public class RNFingerprintIdentifyModule extends ReactContextBaseJavaModule {
   public RNFingerprintIdentifyModule(ReactApplicationContext reactContext) {
     super(reactContext);
     this.reactContext = reactContext;
+    reactContext.addLifecycleEventListener(this);
   }
 
   @Override
@@ -68,7 +70,7 @@ public class RNFingerprintIdentifyModule extends ReactContextBaseJavaModule {
 
     mIsCalledStartIdentify = true;
     mFingerprintIdentify.resumeIdentify();
-    mFingerprintIdentify.startIdentify(6, new BaseFingerprint.FingerprintIdentifyListener() {
+    mFingerprintIdentify.startIdentify(5, new BaseFingerprint.FingerprintIdentifyListener() {
       @Override
       public void onSucceed() {
         // succeed, release hardware automatically
@@ -144,5 +146,23 @@ public class RNFingerprintIdentifyModule extends ReactContextBaseJavaModule {
        response.putString("status", status);
        response.putString("error", message);
        promise.resolve(response);
+
+  }
+  
+  @Override
+  public void onHostResume() {
+    if (mIsCalledStartIdentify) {
+      mFingerprintIdentify.resumeIdentify();
+    }
+  }
+
+  @Override
+  public void onHostPause() {
+    mFingerprintIdentify.cancelIdentify();
+  }
+
+  @Override
+  public void onHostDestroy() {
+    mFingerprintIdentify.cancelIdentify();
   }
 }
