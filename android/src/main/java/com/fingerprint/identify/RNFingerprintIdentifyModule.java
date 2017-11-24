@@ -70,7 +70,7 @@ public class RNFingerprintIdentifyModule extends ReactContextBaseJavaModule impl
 
     mIsCalledStartIdentify = true;
     mFingerprintIdentify.resumeIdentify();
-    mFingerprintIdentify.startIdentify(6, new BaseFingerprint.FingerprintIdentifyListener() {
+    mFingerprintIdentify.startIdentify(5, new BaseFingerprint.FingerprintIdentifyListener() {
       @Override
       public void onSucceed() {
         // succeed, release hardware automatically
